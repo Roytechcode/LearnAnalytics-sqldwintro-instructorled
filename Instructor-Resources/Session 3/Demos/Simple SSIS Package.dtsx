@@ -1,0 +1,1638 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/13/2016 4:13:50 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SURF3CTO"
+  DTS:CreatorName="SURF3CTO\Chris"
+  DTS:DTSID="{D976390B-6C56-4BBE-BF42-41EAFDEA227F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2186.6"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{3ECF46EC-6EE8-4D40-A2C5-91FD8BA98911}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[reading.database.windows.net.Equity.ctesta-oneill]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9CBA053B-E805-4FFD-B726-95F3C4CD4F82}"
+      DTS:ObjectName="reading.database.windows.net.Equity.ctesta-oneill">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ctomsftadssqlsrv.database.windows.net;User ID=ctesta-oneill;Initial Catalog=EquityDB;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMo4j6xhUC0atXGjz9cFeRQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACUk/ncfBsNKqNcySQDe+2GdugdeMdE19CNz/MTAW/BzQAAAAAOgAAAAAIAACAAAAB+unifwMwfnK4+oUUOfcoQJ/+zrlVWoilcbhtXUy06SSAAAABXx+HHvSQa7SeXuTu1IuygoHqf7X5aU175ser64qaQOUAAAAAeX157cKwXztZwokwK6ojjWL6QYC66weFDHEWQPzCXYL/EHOzWg8X0q4FdCmqA3xFjtCvprsO2c+H5WibRRYhI</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[surf3cto.EquityDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F888D556-CD5D-43F7-9846-F8A552420121}"
+      DTS:ObjectName="surf3cto.EquityDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-TM30OOL;Initial Catalog=EquityDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{6EE55CDC-040B-4C70-A10A-8F75E317BC24}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\AzureDWBusHier"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="AzureDWBusHier"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[BusinessHierarchies]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\AzureDWBusHier.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[reading.database.windows.net.Equity.ctesta-oneill]"
+                  connectionManagerRefId="Package.ConnectionManagers[reading.database.windows.net.Equity.ctesta-oneill]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].Columns[BookId]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="BookId"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].ExternalColumns[BookId]"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[BookId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].Columns[Division]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Division"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].ExternalColumns[Division]"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[Division]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].Columns[Cluster]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Cluster"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].ExternalColumns[Cluster]"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[Cluster]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].Columns[Desk]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Desk"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].ExternalColumns[Desk]"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[Desk]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].Columns[Book]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Book"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].ExternalColumns[Book]"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[Book]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].Columns[Volcker]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Volcker"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].ExternalColumns[Volcker]"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[Volcker]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Region"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[Region]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].ExternalColumns[BookId]"
+                      dataType="wstr"
+                      length="250"
+                      name="BookId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].ExternalColumns[Division]"
+                      dataType="wstr"
+                      length="100"
+                      name="Division" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].ExternalColumns[Cluster]"
+                      dataType="wstr"
+                      length="100"
+                      name="Cluster" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].ExternalColumns[Desk]"
+                      dataType="wstr"
+                      length="100"
+                      name="Desk" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].ExternalColumns[Book]"
+                      dataType="wstr"
+                      length="100"
+                      name="Book" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].ExternalColumns[Volcker]"
+                      dataType="wstr"
+                      length="100"
+                      name="Volcker" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="100"
+                      name="Region" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\AzureDWBusHier.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\AzureDWBusHier.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\AzureDWBusHier.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AzureDWBusHier.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\AzureDWBusHier.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\AzureDWDates"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="AzureDWDates"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dates]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\AzureDWDates.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[reading.database.windows.net.Equity.ctesta-oneill]"
+                  connectionManagerRefId="Package.ConnectionManagers[reading.database.windows.net.Equity.ctesta-oneill]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].Columns[Date]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="Date"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].Columns[DateKey]"
+                      cachedDataType="numeric"
+                      cachedName="DateKey"
+                      cachedPrecision="38"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[DateKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].Columns[MonthKey]"
+                      cachedDataType="numeric"
+                      cachedName="MonthKey"
+                      cachedPrecision="38"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[MonthKey]"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[MonthKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].Columns[Month]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Month"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Month]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].Columns[Quarter]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Quarter"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[Quarter]"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Quarter]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].Columns[Year]"
+                      cachedDataType="numeric"
+                      cachedName="Year"
+                      cachedPrecision="38"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].Columns[Year-Quarter]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Year-Quarter"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[Year-Quarter]"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Year-Quarter]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].Columns[Year-Month]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Year-Month"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[Year-Month]"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Year-Month]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].Columns[Year-MonthKey]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Year-MonthKey"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[Year-MonthKey]"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Year-MonthKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].Columns[WeekDayKey]"
+                      cachedDataType="numeric"
+                      cachedName="WeekDayKey"
+                      cachedPrecision="38"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[WeekDayKey]"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[WeekDayKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].Columns[WeekDay]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="WeekDay"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[WeekDay]"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[WeekDay]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].Columns[Day Of Month]"
+                      cachedDataType="numeric"
+                      cachedName="Day Of Month"
+                      cachedPrecision="38"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[Day Of Month]"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Day Of Month]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      dataType="dbTimeStamp2"
+                      name="Date"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      dataType="numeric"
+                      name="DateKey"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[MonthKey]"
+                      dataType="numeric"
+                      name="MonthKey"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      dataType="wstr"
+                      length="100"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[Quarter]"
+                      dataType="wstr"
+                      length="100"
+                      name="Quarter" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      dataType="numeric"
+                      name="Year"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[Year-Quarter]"
+                      dataType="wstr"
+                      length="100"
+                      name="Year-Quarter" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[Year-Month]"
+                      dataType="wstr"
+                      length="100"
+                      name="Year-Month" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[Year-MonthKey]"
+                      dataType="wstr"
+                      length="100"
+                      name="Year-MonthKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[WeekDayKey]"
+                      dataType="numeric"
+                      name="WeekDayKey"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[WeekDay]"
+                      dataType="wstr"
+                      length="100"
+                      name="WeekDay" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input].ExternalColumns[Day Of Month]"
+                      dataType="numeric"
+                      name="Day Of Month"
+                      precision="38" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\AzureDWDates.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\AzureDWDates.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AzureDWDates.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\AzureDWDates.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\AzureDWEquityData"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="AzureDWEquityData"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[EquityTimeSeriesData]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\AzureDWEquityData.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[reading.database.windows.net.Equity.ctesta-oneill]"
+                  connectionManagerRefId="Package.ConnectionManagers[reading.database.windows.net.Equity.ctesta-oneill]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\AzureDWEquityData.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWEquityData.Inputs[OLE DB Destination Input].Columns[Date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Date"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWEquityData.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWEquityData.Inputs[OLE DB Destination Input].Columns[BookId]"
+                      cachedDataType="numeric"
+                      cachedName="BookId"
+                      cachedPrecision="38"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWEquityData.Inputs[OLE DB Destination Input].ExternalColumns[BookId]"
+                      lineageId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output].Columns[BookId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWEquityData.Inputs[OLE DB Destination Input].Columns[P&amp;L]"
+                      cachedDataType="numeric"
+                      cachedName="P&amp;L"
+                      cachedPrecision="31"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWEquityData.Inputs[OLE DB Destination Input].ExternalColumns[P&amp;L]"
+                      lineageId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output].Columns[P&amp;L]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\AzureDWEquityData.Inputs[OLE DB Destination Input].Columns[VaRLower]"
+                      cachedDataType="numeric"
+                      cachedName="VaRLower"
+                      cachedPrecision="31"
+                      cachedScale="7"
+                      externalMetadataColumnId="Package\Data Flow Task\AzureDWEquityData.Inputs[OLE DB Destination Input].ExternalColumns[VaRLower]"
+                      lineageId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output].Columns[VaRLower]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWEquityData.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWEquityData.Inputs[OLE DB Destination Input].ExternalColumns[BookId]"
+                      dataType="numeric"
+                      name="BookId"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWEquityData.Inputs[OLE DB Destination Input].ExternalColumns[P&amp;L]"
+                      dataType="numeric"
+                      name="P&amp;L"
+                      precision="31"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AzureDWEquityData.Inputs[OLE DB Destination Input].ExternalColumns[VaRLower]"
+                      dataType="numeric"
+                      name="VaRLower"
+                      precision="31"
+                      scale="7" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\AzureDWEquityData.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\AzureDWEquityData.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\AzureDWEquityData.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\AzureDWEquityData.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AzureDWEquityData.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\AzureDWEquityData.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\BusHierarchies"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="BusHierarchies"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[BusinessHierarchies]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\BusHierarchies.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[surf3cto.EquityDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[surf3cto.EquityDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[BookId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].ExternalColumns[BookId]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[BookId]"
+                      name="BookId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[Division]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].ExternalColumns[Division]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[Division]"
+                      name="Division"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[Cluster]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].ExternalColumns[Cluster]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[Cluster]"
+                      name="Cluster"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[Desk]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].ExternalColumns[Desk]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[Desk]"
+                      name="Desk"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[Book]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].ExternalColumns[Book]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[Book]"
+                      name="Book"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[Volcker]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].ExternalColumns[Volcker]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[Volcker]"
+                      name="Volcker"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[Region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].ExternalColumns[Region]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].Columns[Region]"
+                      name="Region"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].ExternalColumns[BookId]"
+                      dataType="wstr"
+                      length="250"
+                      name="BookId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].ExternalColumns[Division]"
+                      dataType="wstr"
+                      length="100"
+                      name="Division" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].ExternalColumns[Cluster]"
+                      dataType="wstr"
+                      length="100"
+                      name="Cluster" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].ExternalColumns[Desk]"
+                      dataType="wstr"
+                      length="100"
+                      name="Desk" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].ExternalColumns[Book]"
+                      dataType="wstr"
+                      length="100"
+                      name="Book" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].ExternalColumns[Volcker]"
+                      dataType="wstr"
+                      length="100"
+                      name="Volcker" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="100"
+                      name="Region" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Error Output].Columns[BookId]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Error Output].Columns[BookId]"
+                      name="BookId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Error Output].Columns[Division]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Error Output].Columns[Division]"
+                      name="Division" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Error Output].Columns[Cluster]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Error Output].Columns[Cluster]"
+                      name="Cluster" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Error Output].Columns[Desk]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Error Output].Columns[Desk]"
+                      name="Desk" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Error Output].Columns[Book]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Error Output].Columns[Book]"
+                      name="Book" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Error Output].Columns[Volcker]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Error Output].Columns[Volcker]"
+                      name="Volcker" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Error Output].Columns[Region]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Error Output].Columns[Region]"
+                      name="Region" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Dates"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Dates"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dates]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Dates.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[surf3cto.EquityDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[surf3cto.EquityDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Date]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Date]"
+                      name="Date"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      name="DateKey"
+                      precision="38"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[MonthKey]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[MonthKey]"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[MonthKey]"
+                      name="MonthKey"
+                      precision="38"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Month]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Month]"
+                      name="Month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Quarter]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[Quarter]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Quarter]"
+                      name="Quarter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Year]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Year]"
+                      name="Year"
+                      precision="38"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Year-Quarter]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[Year-Quarter]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Year-Quarter]"
+                      name="Year-Quarter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Year-Month]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[Year-Month]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Year-Month]"
+                      name="Year-Month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Year-MonthKey]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[Year-MonthKey]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Year-MonthKey]"
+                      name="Year-MonthKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[WeekDayKey]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[WeekDayKey]"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[WeekDayKey]"
+                      name="WeekDayKey"
+                      precision="38"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[WeekDay]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[WeekDay]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[WeekDay]"
+                      name="WeekDay"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Day Of Month]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[Day Of Month]"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].Columns[Day Of Month]"
+                      name="Day Of Month"
+                      precision="38"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      dataType="dbTimeStamp2"
+                      name="Date"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      dataType="numeric"
+                      name="DateKey"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[MonthKey]"
+                      dataType="numeric"
+                      name="MonthKey"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      dataType="wstr"
+                      length="100"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[Quarter]"
+                      dataType="wstr"
+                      length="100"
+                      name="Quarter" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      dataType="numeric"
+                      name="Year"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[Year-Quarter]"
+                      dataType="wstr"
+                      length="100"
+                      name="Year-Quarter" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[Year-Month]"
+                      dataType="wstr"
+                      length="100"
+                      name="Year-Month" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[Year-MonthKey]"
+                      dataType="wstr"
+                      length="100"
+                      name="Year-MonthKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[WeekDayKey]"
+                      dataType="numeric"
+                      name="WeekDayKey"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[WeekDay]"
+                      dataType="wstr"
+                      length="100"
+                      name="WeekDay" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output].ExternalColumns[Day Of Month]"
+                      dataType="numeric"
+                      name="Day Of Month"
+                      precision="38" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      name="Date"
+                      scale="3" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      name="DateKey"
+                      precision="38" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[MonthKey]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[MonthKey]"
+                      name="MonthKey"
+                      precision="38" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      name="Month" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[Quarter]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[Quarter]"
+                      name="Quarter" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      name="Year"
+                      precision="38" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[Year-Quarter]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[Year-Quarter]"
+                      name="Year-Quarter" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[Year-Month]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[Year-Month]"
+                      name="Year-Month" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[Year-MonthKey]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[Year-MonthKey]"
+                      name="Year-MonthKey" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[WeekDayKey]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[WeekDayKey]"
+                      name="WeekDayKey"
+                      precision="38" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[WeekDay]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[WeekDay]"
+                      name="WeekDay" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[Day Of Month]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[Day Of Month]"
+                      name="Day Of Month"
+                      precision="38" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\EquityData"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="EquityData"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[EquityTimeSeriesData]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\EquityData.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[surf3cto.EquityDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[surf3cto.EquityDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output].Columns[Date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output].Columns[BookId]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output].ExternalColumns[BookId]"
+                      lineageId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output].Columns[BookId]"
+                      name="BookId"
+                      precision="38"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output].Columns[P&amp;L]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output].ExternalColumns[P&amp;L]"
+                      lineageId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output].Columns[P&amp;L]"
+                      name="P&amp;L"
+                      precision="31"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output].Columns[VaRLower]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output].ExternalColumns[VaRLower]"
+                      lineageId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output].Columns[VaRLower]"
+                      name="VaRLower"
+                      precision="31"
+                      scale="7"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output].ExternalColumns[BookId]"
+                      dataType="numeric"
+                      name="BookId"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output].ExternalColumns[P&amp;L]"
+                      dataType="numeric"
+                      name="P&amp;L"
+                      precision="31"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output].ExternalColumns[VaRLower]"
+                      dataType="numeric"
+                      name="VaRLower"
+                      precision="31"
+                      scale="7" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Error Output].Columns[Date]"
+                      name="Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Error Output].Columns[BookId]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Error Output].Columns[BookId]"
+                      name="BookId"
+                      precision="38" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Error Output].Columns[P&amp;L]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Error Output].Columns[P&amp;L]"
+                      name="P&amp;L"
+                      precision="31"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Error Output].Columns[VaRLower]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Error Output].Columns[VaRLower]"
+                      name="VaRLower"
+                      precision="31"
+                      scale="7" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\AzureDWDates.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\Dates.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output1]"
+              endId="Package\Data Flow Task\AzureDWEquityData.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\EquityData.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output2]"
+              endId="Package\Data Flow Task\AzureDWBusHier.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\BusHierarchies.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150.5,42"
+          Id="Package\Data Flow Task"
+          TopLeft="180.833330638707,110.499998024106" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149.5,42"
+          Id="Package\Data Flow Task\AzureDWDates"
+          TopLeft="224.333330303431,184.266663210789" />
+        <NodeLayout
+          Size="149.5,42"
+          Id="Package\Data Flow Task\BusHierarchies"
+          TopLeft="44.5833326689899,62.3999988842011" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Data Flow Task\AzureDWEquityData"
+          TopLeft="417.416660476476,185.833329885205" />
+        <NodeLayout
+          Size="130.5,42"
+          Id="Package\Data Flow Task\EquityData"
+          TopLeft="431.249995113661,62.6999988609552" />
+        <NodeLayout
+          Size="106,42"
+          Id="Package\Data Flow Task\Dates"
+          TopLeft="229.166663251817,65.4333321632942" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Data Flow Task\AzureDWBusHier"
+          TopLeft="40,182" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output2]"
+          TopLeft="119.041666334495,104.399998884201">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,77.6000011157989"
+              Start="0,0"
+              End="0,70.1000011157989">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.1000011157989" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output1]"
+          TopLeft="500.583327795069,104.699998860955">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81.1333310242498"
+              Start="0,0"
+              End="0,73.6333310242498">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.6333310242498" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="282.166663251817,107.433332163294">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.666667051614,76.8333310474948"
+              Start="0,0"
+              End="16.666667051614,69.3333310474948">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.4166655237474" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.4166655237474"
+                    Point2="0,38.4166655237474"
+                    Point3="4,38.4166655237474" />
+                  <mssgle:LineSegment
+                    End="12.666667051614,38.4166655237474" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.666667051614,38.4166655237474"
+                    Point2="16.666667051614,38.4166655237474"
+                    Point3="16.666667051614,42.4166655237474" />
+                  <mssgle:LineSegment
+                    End="16.666667051614,69.3333310474948" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\AzureDWDates">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\BusHierarchies">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\AzureDWEquityData">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\EquityData">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Dates">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\AzureDWBusHier">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

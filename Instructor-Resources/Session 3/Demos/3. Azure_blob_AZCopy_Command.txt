@@ -1,0 +1,15 @@
+Blob endpoint
+https://ctostorageaccount.blob.core.windows.net/
+
+Blob Key
+QwKMSECn1XfRpnwlT2KlAiEfC8Y+ONFXcbs/N3HNih4c1vhEoTd8r4H/DK4yCXxgPs/Zrgo3/r6Yd8kj+FtEKQ==
+
+switch to AZcopy in command prompt
+cd /d "%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy"
+
+Az copy command to copy a txtfile to the blobstore
+AzCopy /Source:"C:\MSFT\Azure DW\Resources\Assetts\TextFiles" /Dest:https://ctostorageaccount.blob.core.windows.net/datacontainer /DestKey:RitXuxknJP+GH4TfnhUFaoSSg5iFOq8FKTUMH2iiK3PsQ5xr5rCfRrXup2qHx2BtoZzvyGf/3N8rmyKO8bd0vA== /Pattern:"DimDate2.txt"
+
+
+
+
